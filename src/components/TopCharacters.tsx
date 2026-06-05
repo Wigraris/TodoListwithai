@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-
+import {Character} from './types'
 export default function Character(){
     
-    const [Character, setCharacter] = useState([])
+    const [Character, setCharacter] = useState<Character[]>([])
     const [Loading, isLoading] = useState(true)
     useEffect(() => {
         const controller = new AbortController()

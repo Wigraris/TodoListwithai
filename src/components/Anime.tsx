@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
-
+import {Anime} from './types'
 export default function AnimeTierList() {
-    
-    const [Anime, setAnime] = useState<any[]>([])
+    const [Anime, setAnime] = useState<Anime[]>([])
     const [Load, isLoad] = useState(true)
     useEffect(() => {
         const controller = new AbortController()
