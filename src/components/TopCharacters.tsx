@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {Character} from '../types'
 import { ApiCharacter } from "../services/characterApi";
+import MediaCard from "./MediaCard";
 export default function Character(){
     
     const [characterList, setCharacter] = useState<Character[]>([])
@@ -10,20 +11,15 @@ export default function Character(){
         async function loadDataCharacter(){
             const LoadCharacter = await ApiCharacter(controller.signal)
             setCharacter(LoadCharacter)
+            setLoading(false)
         }
         loadDataCharacter()
-        setLoading(false)
         return () => controller.abort()
     }, [])
     return(
-        <div className="flex flex-col gap-2 p-8 sm:flex-row sm:items-center sm:gap-6 sm:py-4 min-h-screen bg-grey-800">
+        <div className="flex flex-col gap-2 p-8 sm:flex-row sm:items-center sm:gap-6 sm:py-4 min-h-screen bg-gray-800">
             {Loading ? <p> Loading...</p>: characterList.map((step) => (
-            <div key={step.mal_id}> 
-            <div className="flex flex-col items-center justify-center  bg-gray-950 text-white"> 
-                <img src = {step.images.jpg.image_url}/>
-            </div>
-            <p className="flex flex-col items-center justify-center bg-gray-950 text-white">{step.name}</p>
-            </div>
+            <MediaCard key={step.mal_id} title={step.name} image_url={step.images.jpg.image_url}/>
              ))}
         </div>
     )

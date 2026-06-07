@@ -22,3 +22,7 @@ export interface Character {
             }
     }
 }
+export interface MediaCardProps{
+    title: string
+    image_url:string
+}
