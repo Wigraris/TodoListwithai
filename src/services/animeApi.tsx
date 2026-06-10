@@ -8,7 +8,6 @@ export async function ApiAnime(signal?: AbortSignal){
         return steptwoJson.data
     }
     catch(error){
-        console.log(error)
         throw error
     }
 }
